@@ -1,6 +1,4 @@
-text = {
-  "my_app": ['1', '2', '3']
-  "second_win": ['123']
-  "final_win": ['3', '2', '1']
-}
-print('hello world')
+txt_title = 'Непонятная вещь с неизмеримо огромным недовольством'
+
+win_x, win_y = 200, 100
+win_wight, win_height = 1000, 600
