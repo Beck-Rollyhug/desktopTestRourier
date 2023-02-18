@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from inst import *
 
 app = QApplication([])
 window = QWidget()
@@ -13,7 +14,9 @@ class TestWin(QWidget):
         self.show()
         
     def setappear(self):
-        pass
+        self.setWindowTitle(txt_title)
+        self.resize(win_widht, win_height)
+        self.move(win_x, win_y)
     
     def initUI(self):
         pass
