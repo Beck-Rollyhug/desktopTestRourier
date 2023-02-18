@@ -14,3 +14,5 @@ class FinalWin(QWidget):
         pass
     def unitUI(self):
         pass
+    def show():
+        pass
