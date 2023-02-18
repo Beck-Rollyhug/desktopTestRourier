@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
-from PyQT5.QtCore import
+from PyQT5.QtCore import 
+from inst import*
 
 class MainWin(QWidget):
     def __init__(self):
@@ -9,7 +10,11 @@ class MainWin(QWidget):
         self.connects()
         self.show()
     def set_appear(self):
-        pass
+        self.setWindowTtle(txt_title)
+        self.main.show()
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+
     def initUI(self):
         pass
     def connects(self):
