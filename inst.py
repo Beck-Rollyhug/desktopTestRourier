@@ -1,3 +1,6 @@
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+
 txt_title = 'Непонятная вещь с неизмеримо огромным недовольством'
 
 win_x, win_y = 200, 100
