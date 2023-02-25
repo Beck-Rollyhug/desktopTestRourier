@@ -2,6 +2,11 @@ from PyQt5.QtCore import Qt
 from PyQT5.QtCore import 
 from inst import*
 
+#TODO: Написать функцию initUI
+#TODO: Написать функцию connects
+#TODO: Написать функцию show
+#TODO: Проверить файл MainWIn на работоспособность(Первый экран должен открываться при запуске)
+
 class MainWin(QWidget):
     def __init__(self):
         super().__init__()
