@@ -11,7 +11,7 @@ class TestWin(QWidget):
         self.setappear()
         self.initUI()
         self.connects()
-        self.show()
+        #self.show()
         
     def setappear(self):
         self.setWindowTitle(txt_title)
@@ -59,10 +59,20 @@ class TestWin(QWidget):
     
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
+
+
+
         
     def next_click(self):
         self.hide()
         self.fw = FinalWin()
     
-    def show(self):
-        pass
+    def timer1(self):
+        timer1text = timer_event_1()
+        'вставьте сюда имя переменной таймера'.setText(timer1text)
+
+
+
+    
+
+
