@@ -11,7 +11,6 @@ class TestWin(QWidget):
         self.setappear()
         self.initUI()
         self.connects()
-        self.show()
         
     def setappear(self):
         self.setWindowTitle(txt_title)
@@ -64,6 +63,3 @@ class TestWin(QWidget):
     def next_click(self):
         self.hide()
         self.fw = FinalWin()
-    
-    def show(self):
-        pass
