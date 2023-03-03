@@ -7,7 +7,7 @@ window = QWidget()
 
 class TestWin(QWidget):
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.setappear()
         self.initUI()
         self.connects()
