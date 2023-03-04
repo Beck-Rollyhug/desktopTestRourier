@@ -69,6 +69,6 @@ class TestWin(QWidget):
 
     def timer(self):
         t = timer_event_1()
-        while map(t.split(), int) > 0:
+        while int(t.split()[0]) > 0:
             self.txt_timer.setText(t)
             t = timer_event_1()
