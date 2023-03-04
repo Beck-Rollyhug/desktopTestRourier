@@ -59,10 +59,16 @@ class TestWin(QWidget):
     
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
+        self.button_starttest1.clicked.connect(self.timer)
+        self.button_starttest2.clicked.connect(self.timer)
+        self.button_starttest3.clicked.connect(self.timer)
         
     def next_click(self):
         self.hide()
         self.fw = FinalWin()
 
     def timer(self):
-        self.txt_timer.setText(timer_event_1())
+        t = timer_event_1()
+        while map(t.split(), int) > 0:
+            self.txt_timer.setText(t)
+            t = timer_event_1()
