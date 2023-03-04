@@ -4,10 +4,6 @@ from instr import *
 from second_win import *
 
 # Работает над файлом: Миша
-#TODO: Написать функцию initUI
-#TODO: Написать функцию connects
-#TODO: Все данные для окон импортировать из файла instr.py
-#TODO: Проверить файл MainWIn на работоспособность (первый экран должен открываться при запуске)
 
 class MainWin(QWidget):
     def __init__(self):

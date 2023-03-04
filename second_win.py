@@ -1,11 +1,9 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from instr import *
+from final_win import *
 
 # Файл Артёма и Виталия
-
-app = QApplication([])
-window = QWidget()
 
 class TestWin(QWidget):
     def __init__(self):
@@ -13,6 +11,7 @@ class TestWin(QWidget):
         self.setappear()
         self.initUI()
         self.connects()
+        self.show()
         
     def setappear(self):
         self.setWindowTitle(txt_title)
@@ -56,21 +55,22 @@ class TestWin(QWidget):
         self.l_line.addWidget(self.hinttest3)
         self.l_line.addWidget(self.btn_next, alignment = Qt.AlignCenter)
         
-        self.h_line.addLayout(r_line)
-        self.h_line.addLayout(l_line)
+        self.h_line.addLayout(self.r_line)
+        self.h_line.addLayout(self.l_line)
+        self.setLayout(self.h_line)
     
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
-        self.button_starttest1.clicked.connect(self.timer)
-        self.button_starttest2.clicked.connect(self.timer)
-        self.button_starttest3.clicked.connect(self.timer)
+        # self.button_starttest1.clicked.connect(self.timer)
+        # self.button_starttest2.clicked.connect(self.timer)
+        # self.button_starttest3.clicked.connect(self.timer)
         
     def next_click(self):
         self.hide()
         self.fw = FinalWin()
 
-    def timer(self):
-        t = timer_event_1()
-        while int(t.split()[0]) > 0:
-            self.txt_timer.setText(t)
-            t = timer_event_1()
+    # def timer(self):
+    #     t = timer_event_1()
+    #     while int(t.split()[0]) > 0:
+    #         self.txt_timer.setText(t)
+    #         t = timer_event_1()
