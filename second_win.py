@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer, QTime
 from PyQt5.QtWidgets import *
 from instr import *
 from final_win import *
@@ -61,6 +61,10 @@ class TestWin(QWidget):
     
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
+        self.button_starttest1.clicked.connect(self.timer_test)
+        # self.bnt_test1.clicked.connect(self.timer_test)
+        # self.bnt_test2.clicked.connect(self.timer_sits)
+        # self.bnt_test3.clicked.connect(self.timer_final)
         # self.button_starttest1.clicked.connect(self.timer)
         # self.button_starttest2.clicked.connect(self.timer)
         # self.button_starttest3.clicked.connect(self.timer)
@@ -74,3 +78,22 @@ class TestWin(QWidget):
     #     while int(t.split()[0]) > 0:
     #         self.txt_timer.setText(t)
     #         t = timer_event_1()
+
+    ########################################################
+    def timer_test(self):
+        time = QTime(0, 1, 0)
+        self.timer = QTimer()
+        
+        self.timer.timeout.connect(self.timer1Event)
+        #self.timer.timeout.connect(self.timer3Event)
+        self.timer.start(1000)
+
+    def timer1Event(self):
+        global time 
+        time = time.addSecs(-1)
+        self.text_timer.setText(time.toString("hh:mm:ss"))
+        self.text_timer.setFont(QFont("Times", 36, QFont.Bold))
+        self.text_timer.setStyleSheet("color: rgb(0,255,0)")
+        if time.toString("hh:mm:ss") == "00:00:00":
+            self.timer.stop()
+
