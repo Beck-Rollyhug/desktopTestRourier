@@ -63,4 +63,5 @@ class TestWin(QWidget):
         
     def next_click(self):
         self.hide()
-        self.fw = FinalWin(experement(int(self.hintage.text()), int(self.hinttest1.text()), int(self.hinttest2.text()), int(self.hinttest2.text())))
+        res, txt_res = experiment(int(self.hintage.text()), int(self.hinttest1.text()), int(self.hinttest2.text()), int(self.hinttest2.text()))
+        self.fw = FinalWin(res, txt_res)
