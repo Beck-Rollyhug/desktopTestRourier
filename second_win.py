@@ -3,7 +3,7 @@ from instr import *
 from final_win import *
 from PyQt5.QtCore import Qt, QTimer, QTime
 
-# Файл Артёма и Виталия
+time = QTime(0, 0, 0)
 
 class TestWin(QWidget):
     def __init__(self):
@@ -63,7 +63,7 @@ class TestWin(QWidget):
         self.btn_next.clicked.connect(self.next_click)
         # self.button_starttest1.clicked.connect(self.timer)
         # self.button_starttest2.clicked.connect(self.timer)
-        # self.button_starttest3.clicked.connect(self.timer)
+        self.button_starttest3.clicked.connect(self.timerfinal)
         
     def next_click(self):
         self.hide()
@@ -71,30 +71,21 @@ class TestWin(QWidget):
     
     def timerfinal(self):
         global time 
+        time = QTime(0, 1, 0)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.Timer3Event)
+        self.timer.start(1000)
+
+    def Timer3Event(self):
+        global time
         time = time.addSecs(-1)
-        self.text_timer.setText(time.toString("hh:mm:ss"))
-        self.text_timer.setFont(QFont("Times", 36, QFont.Bold))
-        self.text_timer.setStyleSheet("color: rgb(0, 0, 0)")
+        self.txt_timer.setText(time.toString("hh:mm:ss"))
+        self.txt_timer.setStyleSheet("color: rgb(0, 0, 0)")
         if time.toString("hh:mm:ss") == "00:00:00":
             self.timer.stop()
-        time = QTime(0, 1, 0)
-        self.timer.timeout.connect(self.Timer3Event)
         if int(time.toString("hh:mm:ss")[6:8]) >= 45:
-            set.text_timer.setStyleSheet("color: rgb(0, 255, 0)")
+            self.txt_timer.setStyleSheet("color: rgb(0, 255, 0)")
         elif int(time.toString("hh:mm:ss")[6:8]) <=15:
-            self.text_timer.setStyleSheet("color: rgb(0, 255, 0)")
+            self.txt_timer.setStyleSheet("color: rgb(0, 255, 0)")
         else:
-            self.text_timer.setStyleSheet("color: rgb(0, 0, 0)")
-    def connects(self):
-        self.button_starttest3.clicked.connect(self.timerfinal)
-        # self.btn_test1.clicked.connect(self.timer_test)
-        # self.btn_test2.clicked.connect(self.timer_sits)
-        # self.btn_test3.clicked.connect(self.timer_final)
-
-
-    # def timer(self):
-    #     t = timer_event_1()
-    #     while int(t.split()[0]) > 0:
-    #         self.txt_timer.setText(t)
-    #         t = timer_event_1()
-
+            self.txt_timer.setStyleSheet("color: rgb(0, 0, 0)")
