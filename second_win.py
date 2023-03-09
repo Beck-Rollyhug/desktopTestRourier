@@ -6,6 +6,8 @@ from final_win import *
 
 # Файл Артёма и Виталия
 
+time = QTime(0, 0, 0)
+
 class TestWin(QWidget):
     def __init__(self):
         super().__init__()
@@ -64,23 +66,65 @@ class TestWin(QWidget):
         self.btn_next.clicked.connect(self.next_click)
         # self.button_starttest1.clicked.connect(self.timer)
         self.button_starttest2.clicked.connect(self.timer2)
+        self.button_starttest1.clicked.connect(self.timer1)
+        self.button_starttest3.clicked.connect(self.timer3)
+        
         # self.button_starttest3.clicked.connect(self.timer)
         
     def next_click(self):
         self.hide()
-        self.fw = FinalWin()
+        self.a = self.hinttest1.text()
+        self.b = self.hinttest2.text()
+        self.c = self.hinttest3.text()
+        self.age = self.hintage.text()
+        print(self.a)
+        print(self.b)
+        print(self.c)
+        print(self.age)
+        self.fw = FinalWin(self.age,self.a,self.b,self.c)
+    def timer1(self):
+        global time
+        self.timer = QTimer()
+        time = QTime(0, 0, 30)
+        self.timer.timeout.connect(self.timer1Event)
+        self.timer.start(1000)
     def timer2(self):
         global time
         self.timer = QTimer()
         time = QTime(0, 0, 30)
         self.timer.timeout.connect(self.timer2Event)      
         self.timer.start(1500)
+    def timer3(self):
+        global time
+        self.timer = QTimer()
+        time = QTime(0, 1, 0)
+        self.timer.timeout.connect(self.timer3Event)
+        self.timer.start(1000)
+    def timer1Event(self):
+        global time
+        time = time.addSecs(-1)
+        self.txt_timer.setText(time.toString('hh:mm:ss'))
+        if time.toString('hh:mm:ss') == '00:00:00':
+            self.timer.stop()
     def timer2Event(self):
         global time
         time = time.addSecs(-1)
         self.txt_timer.setText(time.toString('hh:mm:ss')[6:8]) 
         if time.toString('hh:mm:ss') == '00:00:00':
             self.timer.stop()
+    def timer3Event(self):
+        global time
+        time = time.addSecs(-1) 
+        self.txt_timer.setText(time.toString('hh:mm:ss'))
+        if int(time.toString('hh:mm:ss')[6:8]) <= 15 or int(time.toString('hh:mm:ss')[6:8]) >= 45:
+                self.txt_timer.setStyleSheet('color: rgb(0,255,0)')
+        else:
+            self.txt_timer.setStyleSheet('color: rgb(0,0,0)')
+        
+        if time.toString('hh:mm:ss') == '00:00:00':
+            self.timer.stop()
+
+    
 
 
 

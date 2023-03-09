@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLay
 from instr import *
 
 class FinalWin(QWidget):
-    def __init__(self):
+    def __init__(self,a,b,c,d):
         super().__init__()
         self.set_appear()
         self.initUI()
