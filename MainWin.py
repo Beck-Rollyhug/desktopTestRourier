@@ -4,6 +4,10 @@ from instr import *
 from second_win import *
 
 # Работает над файлом: Миша
+win_x, win_y = 200, 100
+win_width, win_height = 1000, 600
+
+
 
 class MainWin(QWidget):
     def __init__(self):
