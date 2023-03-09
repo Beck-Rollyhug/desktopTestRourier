@@ -1,9 +1,8 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer, QTime
 from PyQt5.QtWidgets import *
 from instr import *
 from final_win import *
 
-# Файл Артёма и Виталия
 
 class TestWin(QWidget):
     def __init__(self):
@@ -61,16 +60,62 @@ class TestWin(QWidget):
     
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
-        # self.button_starttest1.clicked.connect(self.timer)
-        # self.button_starttest2.clicked.connect(self.timer)
-        # self.button_starttest3.clicked.connect(self.timer)
+        self.button_starttest1.clicked.connect(self.timer1)
+        self.button_starttest2.clicked.connect(self.timer2)
+        self.button_starttest3.clicked.connect(self.timer3)
         
+    def timer1(self):
+        # сам таймер
+        global time
+        time = QTime(0, 1, 0)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.timer1Event)
+        self.timer.start(1000)
+    def timer1Event(self):
+        # установка значения таймера в интерфейс
+        global time
+        time = time.addSecs(-1)
+        self.txt_timer.setText(time.toString("hh:mm:ss"))
+        self.txt_timer.setStyleSheet("color: rgb(0,0,0)")
+        if time.toString("hh:mm:ss") == "00:00:00":
+            self.timer.stop()
+
+    def timer2(self):
+        # сам таймер
+        global time
+        time = QTime(0, 0, 30)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.timer2Event)
+        self.timer.start(1500)
+    def timer2Event(self):
+        # установка значения таймера в интерфейс
+        global time
+        time = time.addSecs(-1)
+        self.txt_timer.setText(time.toString("hh:mm:ss")[6:8])
+        self.txt_timer.setStyleSheet("color: rgb(0,0,0)")
+        if time.toString("hh:mm:ss") == "00:00:00":
+            self.timer.stop()
+        
+    def timer3(self):
+        # сам таймер
+        global time
+        time = QTime(0, 1, 0)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.timer3Event)
+        self.timer.start(1000)
+    def timer3Event(self):
+        # установка значения таймера в интерфейс
+        global time
+        time = time.addSecs(-1)
+        self.txt_timer.setText(time.toString("hh:mm:ss"))
+        self.txt_timer.setStyleSheet("color: rgb(0,0,0)")
+        if int(time.toString("hh:mm:ss")[6:8]) >= 45:
+            self.txt_timer.setStyleSheet("color: rgb(0, 255, 0 )")
+        elif int(time.toString("hh:mm:ss")[6:8]) <= 15:
+            self.txt_timer.setStyleSheet("color: rgb(0, 255, 0 )")
+        else:
+             self.txt_timer.setStyleSheet("color: rgb(0, 0, 0 )")
+
     def next_click(self):
         self.hide()
         self.fw = FinalWin()
-
-    # def timer(self):
-    #     t = timer_event_1()
-    #     while int(t.split()[0]) > 0:
-    #         self.txt_timer.setText(t)
-    #         t = timer_event_1()
