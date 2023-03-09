@@ -63,6 +63,7 @@ def experiment(age, t1, t2, t3):
         elif res < 6.5:
             txt_res = r[4]
 
-    return str(res), txt_res
+    else:
+        txt_res = 'Неизвестно'
 
-print(experiment(11, 75, 110, 80))
+    return str(int(res)), txt_res
